@@ -16,8 +16,8 @@
     最合适的编写PoC的方式，比如，什么样的回显会更加清晰？SQL盲注时，记录时间是否会更好？等等
 
 2.在完成了对PoC的代码分析后，笔者进行了此款模板的编写，目前，模板已经支持：
-    任意文件下载漏洞 PoC  (Arbitrary_File_Download.py)
-    Blind XXE漏洞 PoC  (Blind_XXE.py)
+        任意文件下载漏洞 PoC  (Arbitrary_File_Download.py)
+        Blind XXE漏洞 PoC  (Blind_XXE.py)
     XXE DoS（拒绝服务）漏洞 PoC  (XXE_DoS_Exp.py)
     XXE DoS（拒绝服务）漏洞 EXP  (XXE_DoS_PoC.py)
     POST XSS漏洞 PoC （python及html)  （Post_XSS.html，Post_XSS.py)
